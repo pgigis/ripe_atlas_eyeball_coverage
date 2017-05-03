@@ -21,7 +21,7 @@ count_ASNs = 0
 
 # Args
 parser = argparse.ArgumentParser(description="Find Eyeball Networks missing RIPE ATLAS probe coverage")
-parser.add_argument('-c', '--connected', dest='connected', type=int, help="Number of connected probes to use as threshold to assume a network is covered", required=True)
+parser.add_argument('-c', '--connected', dest='connected', type=int, help="Number of connected probes to use as a threshold to assume a network is covered", required=True)
 parser.add_argument('-n', '--number_of_asns', dest='number_of_asns', type=int, help="Number of ASNs to return", required=True)
 #parser.add_argument('-a', '--apnic_filename', dest='apnic_filename', type=str, help="Provide the apnic filename", required=True)
 args = parser.parse_args()
@@ -76,7 +76,6 @@ def check_if_asn_covered(asns, threshold_connected_probes, saved_asns):
 
 
 #Load APNIC Data
-
 with open("dataset.json", 'r') as data:
 	asns_apnic = json.load(data)
 
@@ -99,5 +98,20 @@ print "Total Users:" + str(number_of_users_cover)
 
 with open('json_results.json', 'w') as outfile:
     json.dump(json_of_results, outfile)
+
+
+#Provide .csv (comma seperated) file
+
+results_csv = open("results_csv.csv", 'a+')
+results_csv.write("ASN,  Name, Connected, Disconnected, Abandoned, Never Connected, Estimated Number of Users \n")
+
+
+for asn in json_of_results:
+
+	results_csv.write( str(asn[0]) + ", " + str(asn[1]["apnic_obj"]["AS Name"]) + ", " + str(asn[1]["connected"]) + ", " + str(asn[1]["disconnected"]) + ", " + str(asn[1]["abandoned"]) + ", " + str(asn[1]["never_connected"]) + ", " + str(asn[1]["estimated_users"]) + "\n")
+
+
+results_csv.close()
+
 
 
