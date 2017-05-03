@@ -56,8 +56,8 @@ def check_if_asn_covered(asns, threshold_connected_probes, saved_asns):
 			elif(probe['status']['name'] == "Disconnected"):
 				count_disconnected = count_disconnected + 1
 
-			elif(probe['status']['name'] == "Abandoned"):
-				count_never_connected = count_never_connected + 1
+			else:
+				count_abandoned = count_abandoned + 1
 		
 		detail_dict["AS_name"] = asn["AS Name"]
 		detail_dict["connected"] = count_connected
@@ -108,7 +108,7 @@ results_csv.write("ASN,Name,Connected,Disconnected,Abandoned,Never Connected,Est
 
 for asn in json_of_results:
 
-	results_csv.write( str(asn[0]) + ",'" + str(asn[1]["apnic_obj"]["AS Name"]) + "'," + str(asn[1]["connected"]) + "," + str(asn[1]["disconnected"]) + "," + str(asn[1]["abandoned"]) + "," + str(asn[1]["never_connected"]) + "," + str(asn[1]["estimated_users"]) + "\n")
+	results_csv.write( str(asn[0]) + ",\"" + str(asn[1]["apnic_obj"]["AS Name"]) + "\"," + str(asn[1]["connected"]) + "," + str(asn[1]["disconnected"]) + "," + str(asn[1]["abandoned"]) + "," + str(asn[1]["never_connected"]) + "," + str(asn[1]["estimated_users"]) + "\n")
 
 
 results_csv.close()
