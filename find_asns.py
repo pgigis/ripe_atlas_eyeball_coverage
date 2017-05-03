@@ -31,8 +31,10 @@ def check_if_asn_covered(asns, threshold_connected_probes, saved_asns):
 	
 	#Case asns is a list of asns
 	for asn in asns:
-		asn_n = asn["ASN"].split("AS")[1]
+		
+		print "Processing " + str(asn["ASN"])
 
+		asn_n = asn["ASN"].split("AS")[1]
 		filters = {"asn_v4": asn_n}
 		probes = ProbeRequest(**filters)
 
@@ -56,10 +58,6 @@ def check_if_asn_covered(asns, threshold_connected_probes, saved_asns):
 
 			elif(probe['status']['name'] == "Abandoned"):
 				count_never_connected = count_never_connected + 1
-
-
-		# Print total count of found probes
-		print("Number of probes: %d " % probes.total_count)
 		
 		detail_dict["AS_name"] = asn["AS Name"]
 		detail_dict["connected"] = count_connected
@@ -70,8 +68,7 @@ def check_if_asn_covered(asns, threshold_connected_probes, saved_asns):
 		detail_dict["apnic_obj"] = asn
 
 		if(count_connected <= threshold_connected_probes):
-
-			json_of_results.append( (asn_n, detail_dict) )
+			json_of_results.append( (asn["ASN"], detail_dict) )
 			return True
 
 		return False
@@ -94,11 +91,13 @@ for i in values_list:
 	if(args.number_of_asns == count_ASNs):
 		break
 
-	if(check_if_asn_covered(asns_apnic[str(i)], args.connected, json_of_results) == False):
+	if(check_if_asn_covered(asns_apnic[str(i)], args.connected, json_of_results)):
 		count_ASNs = count_ASNs + 1
 		number_of_users_cover = number_of_users_cover + i
 
 print "Total Users:" + str(number_of_users_cover)
 
-with open('json_results.txt', 'w') as outfile:
+with open('json_results.json', 'w') as outfile:
     json.dump(json_of_results, outfile)
+
+
