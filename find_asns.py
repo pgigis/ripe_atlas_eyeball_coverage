@@ -102,13 +102,13 @@ with open('json_results.json', 'w') as outfile:
 
 #Provide .csv (comma seperated) file
 
-results_csv = open("results_csv.csv", 'a+')
-results_csv.write("ASN,  Name, Connected, Disconnected, Abandoned, Never Connected, Estimated Number of Users \n")
+results_csv = open("results.csv", 'a+')
+results_csv.write("ASN,Name,Connected,Disconnected,Abandoned,Never Connected,Estimated Number of Users\n")
 
 
 for asn in json_of_results:
 
-	results_csv.write( str(asn[0]) + ", " + str(asn[1]["apnic_obj"]["AS Name"]) + ", " + str(asn[1]["connected"]) + ", " + str(asn[1]["disconnected"]) + ", " + str(asn[1]["abandoned"]) + ", " + str(asn[1]["never_connected"]) + ", " + str(asn[1]["estimated_users"]) + "\n")
+	results_csv.write( str(asn[0]) + ",'" + str(asn[1]["apnic_obj"]["AS Name"]) + "'," + str(asn[1]["connected"]) + "," + str(asn[1]["disconnected"]) + "," + str(asn[1]["abandoned"]) + "," + str(asn[1]["never_connected"]) + "," + str(asn[1]["estimated_users"]) + "\n")
 
 
 results_csv.close()
