@@ -3,14 +3,8 @@ import os
 import csv
 import sys
 import json
-import pprint
 import argparse
 from ripe.atlas.cousteau import ProbeRequest
-from threading import Thread, Lock
-import collections
-# Number of parallel threads
-
-parallel_threads = 8
 
 ### Initializing paths
 
@@ -19,17 +13,13 @@ curr_dict = os.path.dirname(os.path.realpath(__file__))
 
 from Atlas import Measure
 
-
-top_missing_ASNS = 100
-
-saved_asns = list()
+json_of_results = list()
 
 number_of_users_cover = 0
 count_ASNs = 0
 
 
 # Args
-
 parser = argparse.ArgumentParser(description="Find Eyeball Networks missing RIPE ATLAS probe coverage")
 parser.add_argument('-c', '--connected', dest='connected', type=int, help="Number of connected probes to use as threshold to assume a network is covered", required=True)
 parser.add_argument('-n', '--number_of_asns', dest='number_of_asns', type=int, help="Number of ASNs to return", required=True)
@@ -81,7 +71,7 @@ def check_if_asn_covered(asns, threshold_connected_probes, saved_asns):
 
 		if(count_connected <= threshold_connected_probes):
 
-			saved_asns.append( (asn_n, detail_dict) )
+			json_of_results.append( (asn_n, detail_dict) )
 			return True
 
 		return False
@@ -101,14 +91,14 @@ values_list.sort(reverse=True)
 
 for i in values_list:
 
-	if(top_missing_ASNS == count_ASNs):
+	if(args.number_of_asns == count_ASNs):
 		break
 
-	if(check_if_asn_covered(asns_apnic[str(i)], args.connected, saved_asns) == False):
+	if(check_if_asn_covered(asns_apnic[str(i)], args.connected, json_of_results) == False):
 		count_ASNs = count_ASNs + 1
 		number_of_users_cover = number_of_users_cover + i
 
 print "Total Users:" + str(number_of_users_cover)
 
-with open('results.txt', 'w') as outfile:
-    json.dump(saved_asns, outfile)
+with open('json_results.txt', 'w') as outfile:
+    json.dump(json_of_results, outfile)
