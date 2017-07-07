@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Eyeball networks coverage - Home</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap theme -->
+    <link href="dist/css/bootstrap-theme.min.css" rel="stylesheet">
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="theme.css" rel="stylesheet">
+  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" />
+
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="assets/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+
+  <body>
+
+     <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Eyeball networks coverage</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-form navbar-right">
+          	<li class="active"><a href="index.html">Home</a></li>
+            <li><a href="table.html">Countries Table</a></li>
+   
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Map <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li class="dropdown-header">IPv4</li>
+                  <li><a href="map.html?version=4&public_only=true">Public Probes</a></li>
+                  <li><a href="map.html?version=4&public_only=false">Public and Private Probes</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li class="dropdown-header">IPv6</li>
+                  <li><a href="map.html?version=6&public_only=true">Public Probes</a></li>
+                  <li><a href="map.html?version=6&public_only=false">Public and Private Probes</a></li>
+                </ul>
+            </li>
+
+             <li><a href="about.html">About</a></li>
+
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+    <br>
+     <div class="container">
+
+        <br></br>
+
+
+      <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1">
+            <h1> Eyeball networks coverage </h1>
+            <h3> An estimation of Internet users being covered by RIPE Atlas probes </h3>
+            <hr>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1" style="text-align: justify; text-justify: inter-word;">
+		 	<p> <b>The Eyeball networks coverage</b> aims to measure the number of Internet users being covered by RIPE Atlas probes but also 
+		 	discover eyeball networks with few or zero probes. Eyeball network data are based on user population estimates provided by <b><a href="https://stats.labs.apnic.net/aspop">APNIC Labs</a></b>. 
+		 	</br>
+		 	<p>The methodology can be found on the <b><a href="about.html">about</a></b> page.</p>
+
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1" style="text-align: justify; text-justify: inter-word;">
+		 	<center><h2>Browse Data </h2></center>
+		 	</br>
+		 	</hr>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-6 col-md-4 col-md-offset-2" style="text-align: justify; text-justify: inter-word;">
+		    <div class="thumbnail">
+		      <img src="data_sources/img/table.png" alt="...">
+		      <div class="caption">
+		        <h3>Explore data in tabular form</h3>
+		        <p>Information for 249 countries.</p>
+		        <p><a href="table.html" class="btn btn-primary" role="button">View Countries Table</a> </p>
+		      </div>
+		    </div>
+        </div>
+
+
+        <div class="col-xs-6 col-md-4" style="text-align: justify; text-justify: inter-word;">
+		    <div class="thumbnail">
+		      <img src="data_sources/img/map.png" alt="...">
+		      <div class="caption">
+		        <h3>Explore data on world map</h3>
+		        <p>Visualisation of data on a global map.</p>
+		        <p><a href="map.html?version=4&public_only=false" class="btn btn-primary" role="button">View IPv4</a> <a href="map.html?version=6&public_only=false" class="btn btn-default" role="button"> View IPv6</a></p>
+		      </div>
+		    </div>
+        </div>
+
+      </div>
+
+
+
+    </div><!-- /.container -->
+      <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-55317739-6', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery.min.js"><\/script>')</script>
+	<script type="text/javascript" src="jquery.dynatable.js"></script>
+    <script src="dist/js/bootstrap.min.js"></script>
+  </body>
+</html>
