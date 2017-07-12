@@ -165,7 +165,7 @@
 
       <div class="row">
         <div class="col-md-6 col-md-offset-3">
-          <center><small>Internet users coverage is estimated using percentage of IPv4 Public and Private probes.</small></center>
+          <center><small>Internet users coverage is estimated using percentage of IPv4 Public probes.</small></center>
         </div>
       </div>
 
@@ -564,12 +564,12 @@
         $.getJSON("data_sources/" + name_of_file, function(data) {
 
           $('#progbar').empty()
-          $('#progbar').append((data['countries'][country]['IPv4']['public_and_private_percent']).toFixed(2))
-          $('#progbar').width( (data['countries'][country]['IPv4']['public_and_private_percent']).toString() + "%" );
+          $('#progbar').append((data['countries'][country]['IPv4']['public_percent']).toFixed(2))
+          $('#progbar').width( (data['countries'][country]['IPv4']['public_percent']).toString() + "%" );
 
           if (country in countries_population) {
             $('#users_covered').empty()
-            $('#users_covered').append( parseInt(data['countries'][country]['IPv4']['public_and_private_percent'] / 100 * parseInt(countries_population[country]['population'])))
+            $('#users_covered').append( parseInt(data['countries'][country]['IPv4']['public_percent'] / 100 * parseInt(countries_population[country]['population'])))
               
             $('#total_users').empty()
             $('#total_users').append(  countries_population[country]['population'])
