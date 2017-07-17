@@ -540,22 +540,32 @@
 
     function changeColor() {
         var count = 0
+        var to_delete = 0
           $('#feature-table tr td').each(function() {
               
               if(count == 3){
-                console.log($(this).text())
 
                 if(Number($(this).text()) > 0 && Number($(this).text()) < 3){
                   $(this).closest('tr').css('background-color', '#f8efc0');
                 }else if(Number($(this).text()) >= 3) {
                   $(this).closest('tr').css('background-color', '#dff0d8');
                 }
-
               }
+              if(count == 3){
+                if(Number($(this).text()) == 0){
+                    to_delete = 1
+                } 
+              }
+              
+
               count = count + 1
 
               if(count == 10){
                 count = 0
+                if(to_delete == 1){
+                  $(this).html( '<b><a href="https://atlas.ripe.net/get-involved/become-a-host/" target="_blank">Apply for a probe</a></b>' );
+                }
+                to_delete = 0
               }
           });
       }
@@ -597,7 +607,6 @@
             link_to_ASN += data['countries'][country]['apnic'][as]['as'].toString() + "</a>"
 
 
-            console.log(link_to_ASN)
             obj = { "ASN": link_to_ASN }
             obj["Name"] = data['countries'][country]['apnic'][as]['autnum']
             obj["Estimated Population %"] = Math.round(data['countries'][country]['apnic'][as]['percent'] * 100) / 100
