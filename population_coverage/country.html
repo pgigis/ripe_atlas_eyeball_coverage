@@ -563,7 +563,7 @@
               if(count == 10){
                 count = 0
                 if(to_delete == 1){
-                  $(this).html( '<b><a href="https://atlas.ripe.net/get-involved/become-a-host/" target="_blank">Apply for a probe</a></b>' );
+                  $(this).html( '<b><a href="https://atlas.ripe.net/campaigns/605da94a-6dc7-4d9b-b946-3797bba0ba0d/" target="_blank">Apply for a probe</a></b>' );
                 }
                 to_delete = 0
               }
@@ -664,9 +664,13 @@
               obj["IPv6 Private Probes"] = 0
               obj["IPv6 Total Probes"] = 0
             }
-              
-              obj["More"] = ' <button type="button" class="btn btn-info btn-sm" onclick="modal_update_information( \'' + asn_str + '\' , \'' + data['countries'][country]['apnic'][as]['percent'] + '\' );">'
-              obj["More"] += 'View</button>'
+              if(obj["IPv4 Public Probes"] == 0 ){
+                obj["More"] = '<b><a href="https://atlas.ripe.net/campaigns/605da94a-6dc7-4d9b-b946-3797bba0ba0d/" target="_blank">Apply for a probe</a></b>'
+
+              }else{
+                obj["More"] = ' <button type="button" class="btn btn-info btn-sm" onclick="modal_update_information( \'' + asn_str + '\' , \'' + data['countries'][country]['apnic'][as]['percent'] + '\' );">'
+                obj["More"] += 'View</button>'
+              }
 
 
             list_of_asns.push(obj)     

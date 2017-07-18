@@ -17,10 +17,10 @@ parallel_threads = 8
 
 
 # parse command line arguments
-parser = argparse.ArgumentParser(description="Fetch the apnic estimates per country")
+parser = argparse.ArgumentParser(description="Fetch the APNIC estimates per country")
 parser.add_argument('-c', '--country', dest='country', type=str, help="Country code to study (default = all)", default="all")
 parser.add_argument('-p', '--cumulative_percent', dest='cumulative_percent', type=float, help="Threshold of cumulative percentage for population being covered (default = 95)", default=95)
-parser.add_argument('-t', '--threshold_of_marketshare', dest='threshold_of_marketshare', type=float, help="Threshold to consider a network as eyeball (default = 0.1 | 0.1%)", default=0.1)
+parser.add_argument('-t', '--threshold_of_marketshare', dest='threshold_of_marketshare', type=float, help="Threshold to consider a network as eyeball (default = 0.1)", default=0.1)
 
 args = parser.parse_args()
 
