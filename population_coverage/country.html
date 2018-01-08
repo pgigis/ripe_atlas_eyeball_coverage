@@ -607,9 +607,9 @@
             link_to_ASN += data['countries'][country]['apnic'][as]['as'].toString() + "</a>"
 
 
-            obj = { "ASN": link_to_ASN }
-            obj["Name"] = data['countries'][country]['apnic'][as]['autnum']
-            obj["Estimated Population %"] = Math.round(data['countries'][country]['apnic'][as]['percent'] * 100) / 100
+            obj = { "Network (ASN)": link_to_ASN }
+            obj["Network Name"] = data['countries'][country]['apnic'][as]['autnum']
+            obj["Estimated User Population %"] = Math.round(data['countries'][country]['apnic'][as]['percent'] * 100) / 100
 
             asn_str = "AS".concat(data['countries'][country]['apnic'][as]['as'])
 
