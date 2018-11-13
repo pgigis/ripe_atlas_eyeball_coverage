@@ -33,7 +33,7 @@ def save_networks(country, list_of_eyeball_networks):
 
 def fetch_data(country, cumulative_percent, threshold_of_marketshare):
     
-    APNIC_ECON_URL = "http://data.labs.apnic.net/ipv6-measurement/Economies/%s/%s.asns.json?m=%s" % (country, country, threshold_of_marketshare)
+    APNIC_ECON_URL = "http://v6data.data.labs.apnic.net/ipv6-measurement/Economies/%s/%s.asns.json?m=%s" % (country, country, threshold_of_marketshare)
     econ_data = []
     list_of_eyeball_networks = list()
 
